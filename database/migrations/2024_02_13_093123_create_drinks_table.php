@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('drinks', function (Blueprint $table) {
             $table->id();
+            $table->string("drink",20);
+            $table->integer("amount");
+            $table->foreignId("type_id");
+            $table->foreignId("package_id");
             $table->timestamps();
         });
     }

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types', function (Blueprint $table) {
-            $table->id();
-            $table->string("type", 20);
-            //$table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer("login_attempt")->default(0);
+            $table->timestamp("banned_time")->nullable()->default(null);
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

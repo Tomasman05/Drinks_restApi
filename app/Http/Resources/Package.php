@@ -10,7 +10,7 @@ class Package extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "package"=>$this->package
+            "Csomagolás"=>$this->package
         ];
     }
 }

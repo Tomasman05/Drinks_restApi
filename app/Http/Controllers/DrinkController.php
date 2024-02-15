@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Drink;
 Use App\Http\Resources\Drink as DrinkResource;
 Use App\Http\Controllers\Api\ResponseController;
+Use App\Http\Controllers\Api\TypeController;
+Use App\Http\Controllers\Api\PackageController;
 use App\Http\Requests\DrinkAddChecker;
 
 class DrinkController extends ResponseController
@@ -26,6 +28,14 @@ class DrinkController extends ResponseController
     }
     public function newDrink(DrinkAddChecker $request){
         $request->validated();
+        $input=$request->all();
+
+        $drink= new Drink;
+        $drink->drink=$input["drink"];
+        $drink->amount=$input["amount"];
+        $drink->type_id=(new TypeController)->getTypeId($input["type"]);
+        $drink->package_id=(new PackageController)->getPackageId($input["package"]);
+        return("Sikeres felvétel");
     }
     public function modifyDrink(Request $request){
 

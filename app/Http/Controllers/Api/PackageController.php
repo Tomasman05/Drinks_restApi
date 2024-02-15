@@ -14,4 +14,9 @@ class PackageController extends ResponseController
         return $this->sendResponse(PackageResource::collection($packages),"Csomagok betöltve");
 
     }
+    public function getPackageId($packageName){
+        $package = Package::where("type",$packageName)->first();
+        $id = $package->id;
+        return $id; 
+    }
 }

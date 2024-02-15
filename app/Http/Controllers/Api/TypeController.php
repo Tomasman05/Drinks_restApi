@@ -13,4 +13,9 @@ class TypeController extends ResponseController
         $types = Type::all();
         return $this->sendResponse(TypeResource::collection($types),"Fajták betöltve");
     }
+    public function getTypeId($typeName){
+        $type = Type::where("type",$typeName)->first();
+        $id = $type->id;
+        return $id; 
+    }
 }

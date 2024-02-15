@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class DrinkAddChecker extends FormRequest
 {
@@ -29,5 +30,12 @@ class DrinkAddChecker extends FormRequest
             "type.required"=>"Típus elvárt",
             "package.required"=>"Kiszerelés elvárt",
         ];
+    }
+    public function failedValidation(Validator $validator){
+        throw new HttpResponseException(response()->json([
+            "success"=>false,
+            "message"=>"Adatbeviteli hiba",
+            "data"=>$validator->errors()
+        ]));
     }
 }

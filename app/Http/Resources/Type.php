@@ -10,7 +10,7 @@ class Type extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "type"=>$this->type
+            "Típus"=>$this->type
         ];
     }
 }

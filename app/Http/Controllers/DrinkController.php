@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Drink;
 Use App\Http\Resources\Drink as DrinkResource;
 Use App\Http\Controllers\Api\ResponseController;
+use App\Http\Requests\DrinkAddChecker;
 
 class DrinkController extends ResponseController
 {
@@ -22,5 +23,11 @@ class DrinkController extends ResponseController
             return $this->sendError("Null","Nincs ilyen ital");
         }
         return $this->sendResponse(DrinkResource::make($drink),"$name megtalálva");
+    }
+    public function newDrink(DrinkAddChecker $request){
+        $request->validated();
+    }
+    public function modifyDrink(Request $request){
+
     }
 }

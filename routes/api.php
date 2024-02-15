@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DrinkController;
+use App\Http\Controllers\Api\TypeController;
+use App\Http\Controllers\Api\PackageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/drinks", [DrinkController::class,"getDrinks"]);
+Route::get("/drink", [DrinkController::class,"getDrink"]);
+Route::get("/type", [TypeController::class,"getTypes"]);
+Route::get("/package", [PackageController::class,"getPackages"]);

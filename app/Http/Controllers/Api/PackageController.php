@@ -15,7 +15,7 @@ class PackageController extends ResponseController
 
     }
     public function getPackageId($packageName){
-        $package = Package::where("type",$packageName)->first();
+        $package = Package::where("package",$packageName)->first();
         $id = $package->id;
         return $id; 
     }

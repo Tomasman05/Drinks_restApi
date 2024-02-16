@@ -35,13 +35,15 @@ class DrinkController extends ResponseController
         $drink->amount=$input["amount"];
         $drink->type_id=(new TypeController)->getTypeId($input["type"]);
         $drink->package_id=(new PackageController)->getPackageId($input["package"]);
-        return("Sikeres felvétel");
+
+        $drink->save();
+        return $this->sendResponse($drink,"Ital sikeresen felvéve.");
     }
     public function modifyDrink(Request $request){
 
     }
 
     public function deleteDrink(Request $request){
-        
+
     }
 }

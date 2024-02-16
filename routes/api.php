@@ -24,5 +24,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("/drinks", [DrinkController::class,"getDrinks"]);
 Route::get("/drink", [DrinkController::class,"getDrink"]);
 Route::post("/newdrink", [DrinkController::class,"newDrink"]);
+Route::put("/modifydrink", [DrinkController::class,"modifyDrink"]);
+Route::delete("/deletedrink", [DrinkController::class,"deleteDrink"]);
 Route::get("/type", [TypeController::class,"getTypes"]);
+Route::post("/addtype", [TypeController::class,"addType"]);
+Route::put("/modifytype", [TypeController::class,"modifyType"]);
+Route::delete("/deletetype", [TypeController::class,"deleteType"]);
 Route::get("/package", [PackageController::class,"getPackages"]);
+Route::post("/addpackage", [PackageController::class,"addPackage"]);
+Route::put("/modifypackage", [PackageController::class,"modifyPackage"]);
+Route::delete("/deletepackage", [PackageController::class,"deletePackage"]);

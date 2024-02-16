@@ -39,11 +39,26 @@ class DrinkController extends ResponseController
         $drink->save();
         return $this->sendResponse($drink,"Ital sikeresen felvéve.");
     }
-    public function modifyDrink(Request $request){
+    public function modifyDrink(DrinkAddChecker $request){
+        $input=$request ->all();
+        $id = $input["id"];
 
+        $drink= Drink::find($id);
+        $drink->drink=$input["drink"];
+        $drink->amount=$input["amount"];
+        $drink->type_id=(new TypeController)->getTypeId($input["type"]);
+        $drink->package_id=(new PackageController)->getPackageId($input["package"]);
+
+        $drink->save();
+        return $this->sendResponse($drink,"Ital sikeresen módosítva.");
     }
 
     public function deleteDrink(Request $request){
+        $input=$request ->all();
+        $id = $input["id"];
 
+        $drink= Drink::find($id);
+        $drink->delete();
+        return $this->sendResponse($drink,"Ital sikeresen törölve.");
     }
 }

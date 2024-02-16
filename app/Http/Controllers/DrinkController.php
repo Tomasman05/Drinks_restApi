@@ -40,4 +40,8 @@ class DrinkController extends ResponseController
     public function modifyDrink(Request $request){
 
     }
+
+    public function deleteDrink(Request $request){
+        
+    }
 }

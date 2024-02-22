@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DrinkController;
 use App\Http\Controllers\Api\TypeController;
 use App\Http\Controllers\Api\PackageController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::get("/package", [PackageController::class,"getPackages"]);
 Route::post("/addpackage", [PackageController::class,"addPackage"]);
 Route::put("/modifypackage", [PackageController::class,"modifyPackage"]);
 Route::delete("/deletepackage", [PackageController::class,"deletePackage"]);
+Route::post("/register", [AuthController::class,"register"]);
+Route::post("/login", [AuthController::class,"login"]);

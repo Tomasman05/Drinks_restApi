@@ -16,7 +16,7 @@ class AuthController extends ResponseController
         $request->validated();
         $input = $request->all();
         $input["password"]=bcrypt($input["password"]);
-        $user=User::create($input);
+        $user = User::create($input);
         $success["name"] =$user->name;
         return $this->sendResponse($success,"Sikeres regiszrtáció");
     }
@@ -26,15 +26,16 @@ class AuthController extends ResponseController
         if(Auth::attempt(["email"=>$request->email,"password"=>$request->password])){
             $user = Auth::user();
             $success["token"] = $user->createToken($user->name."token")->plainTextToken;
-            $succes["name"]=$user->name;
-            return $this->sendResponse($succes,"Sikeres bejelentkezés");
+            $success["name"]=$user->name;
+            return $this->sendResponse($success,"Sikeres bejelentkezés");
         }
         else{
             return $this->sendError("Adatbeviteli hiba",["Hibás email vagy jelszó"],401);
         }
     }
 
-    public function logout(){
-
+    public function logout(Request $request){
+        auth( "sanctum" )->user()->currentAccessToken()->delete();
+        return $this->sendResponse("Sikeres kijelentkezés",[]);
     }
 }
